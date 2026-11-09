@@ -1,5 +1,4 @@
 import streamlit as st
-# --- BARRA LATERAL ---
 
 st.sidebar.title("Mi primera barra lateral de Streamlit")
 
@@ -27,7 +26,6 @@ if texto_barra:
 
 
 
-# --- ÁREA PRINCIPAL ---
 
 st.title("Mi primera aplicación de Streamlit")
 
