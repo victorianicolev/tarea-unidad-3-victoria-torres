@@ -1,57 +1,53 @@
-import matplotlib.pyplot as plt
-import pandas as pd
-import streamlit as st
+# --- BARRA LATERAL ---
 
-st.set_page_config(page_title="Ventas de autos", page_icon="🚗")
-st.title("🚗 Ventas de autos por color")
+st.sidebar.title("Mi primera barra lateral de Streamlit")
 
+st.sidebar.header("¡Hola, Barra Lateral!")
 
-@st.cache_data
-def cargar_datos() -> pd.DataFrame:
-    return pd.read_csv("ventas.csv", sep=";", parse_dates=["fecha"])
+st.sidebar.text("Esto es una barra lateral")
+
+st.sidebar.image("logo", width=250)
 
 
-df = cargar_datos()
 
-# --- Filtros en la barra lateral ---
-st.sidebar.header("Filtros")
-colores = st.sidebar.multiselect(
-    "Colores", sorted(df["color"].unique()), default=sorted(df["color"].unique())
-)
-anios = st.sidebar.multiselect(
-    "Años", sorted(df["fecha"].dt.year.unique()), default=sorted(df["fecha"].dt.year.unique())
-)
+if st.sidebar.button("Haz clic pero en la barra lateral"):
 
-filtrado = df[df["color"].isin(colores) & df["fecha"].dt.year.isin(anios)]
+  st.sidebar.write("¡Botón de la barra lateral presionado!")
 
-if filtrado.empty:
-    st.warning("Selecciona al menos un color y un año.")
-    st.stop()
 
-# --- Métricas ---
-col1, col2 = st.columns(2)
-col1.metric("Total de autos vendidos", f"{filtrado['unidades'].sum():,}")
-col2.metric(
-    "Color más vendido", filtrado.groupby("color")["unidades"].sum().idxmax()
-)
 
-# --- Gráfico 1: ventas por color ---
-st.subheader("Ventas totales por color")
-por_color = filtrado.groupby("color")["unidades"].sum().sort_values(ascending=False)
-fig1, ax1 = plt.subplots()
-ax1.bar(por_color.index, por_color.values, color="steelblue")
-ax1.set_ylabel("Unidades")
-st.pyplot(fig1)
+texto_barra = st.sidebar.text_input("Escribe algo en la barra:")
 
-# --- Gráfico 2: evolución mensual ---
-st.subheader("Evolución mensual")
-pivot = filtrado.pivot_table(index="fecha", columns="color", values="unidades", aggfunc="sum")
-fig2, ax2 = plt.subplots()
-pivot.plot(ax=ax2, marker="o")
-ax2.set_ylabel("Unidades")
-ax2.set_xlabel("")
-st.pyplot(fig2)
+if texto_barra:
 
-# --- Tabla de datos ---
-with st.expander("Ver datos"):
-    st.dataframe(filtrado)
+  st.sidebar.write(f"Escribiste en la barra: {texto_barra}")
+
+
+
+
+
+# --- ÁREA PRINCIPAL ---
+
+st.title("Mi primera aplicación de Streamlit")
+
+st.header("¡Hola, Streamlit!")
+
+st.text("Esta es una aplicación simple")
+
+st.image("logo u.jpg", width=400)
+
+
+
+if st.button("Haz clic"):
+
+  st.write("¡Botón principal presionado!")
+
+
+
+texto_principal = st.text_input("Escribe algo:")
+
+if texto_principal:
+
+  st.write(f"Escribiste: {texto_principal}")
+
+Escribir mensaje
