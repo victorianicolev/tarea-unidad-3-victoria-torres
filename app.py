@@ -50,4 +50,3 @@ if texto_principal:
 
   st.write(f"Escribiste: {texto_principal}")
 
-Escribir mensaje
