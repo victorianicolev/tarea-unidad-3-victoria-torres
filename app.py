@@ -1,3 +1,4 @@
+import streamlit as st
 # --- BARRA LATERAL ---
 
 st.sidebar.title("Mi primera barra lateral de Streamlit")
