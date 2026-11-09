@@ -35,7 +35,7 @@ st.header("¡Hola, Streamlit!")
 
 st.text("Esta es una aplicación simple")
 
-st.image("logo u.jpg", width=400)
+st.image("logo", width=400)
 
 
 
