@@ -7,7 +7,7 @@ st.sidebar.header("¡Hola, Barra Lateral!")
 
 st.sidebar.text("Esto es una barra lateral")
 
-st.sidebar.image("logo u.jpg", width=400)
+st.sidebar.image("logo u.jpg", width=250)
 
 
 
